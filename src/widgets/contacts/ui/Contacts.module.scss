@@ -1,0 +1,30 @@
+.list {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.item {
+  display: grid;
+  gap: var(--space-1);
+
+  @media (min-width: 768px) {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+.label {
+  color: var(--color-text-muted);
+}
+
+.link {
+  color: var(--color-accent);
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

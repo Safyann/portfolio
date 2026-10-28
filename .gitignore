@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+npm-debug.log*
+.DS_Store
+.swc/
+.claude/
+
+# Личные документы — в публичный репозиторий не попадают.
+cover-letter.md
+interview-prep.md
+resume-*.md
+
+# Внутренняя спецификация с рабочими заметками — только локально.
+docs/spec.md
