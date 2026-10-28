@@ -134,6 +134,18 @@ img {
   }
 }
 
+// Только сдвиг, без прозрачности — для h1: он остаётся видимым, даже если анимация не запустится
+// (превью ссылок, фоновая вкладка), и не откладывает замер LCP.
+@keyframes rise {
+  from {
+    transform: translateY(var(--reveal-shift, 24px));
+  }
+
+  to {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   // Первый экран — при загрузке, с задержкой по порядку: --reveal-order задаётся у элемента.
   .enter {
@@ -141,6 +153,10 @@ img {
 
     animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: calc(var(--reveal-order, 0) * 80ms);
+  }
+
+  h1.enter {
+    animation-name: rise;
   }
 
   // Всё ниже первого экрана — по мере прокрутки, привязано к положению элемента во вьюпорте.

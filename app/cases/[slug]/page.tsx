@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { CASES, getCaseBySlug } from '@/entities/case';
-import { SITE } from '@/shared/config';
+import { OPEN_GRAPH_BASE, SITE } from '@/shared/config';
 import { ButtonLink, ChipList, Container } from '@/shared/ui';
 
 import styles from './page.module.scss';
@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: CasePageProps): Promise<Metad
     description: caseStudy.summary,
     alternates: { canonical: `/cases/${caseStudy.slug}/` },
     openGraph: {
+      ...OPEN_GRAPH_BASE,
       url: `/cases/${caseStudy.slug}/`,
       title: `${caseStudy.client}: ${caseStudy.title} — ${SITE.name}`,
       description: caseStudy.summary,

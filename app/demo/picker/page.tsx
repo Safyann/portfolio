@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import { ApartmentPicker } from '@/features/apartment-picker';
+import { ApartmentPicker, ApartmentPickerFallback } from '@/features/apartment-picker';
 import { SITE } from '@/shared/config';
 import { Container } from '@/shared/ui';
 
@@ -32,7 +32,7 @@ export default function PickerDemoPage() {
             </a>
           </p>
         </header>
-        <Suspense fallback={<p>Загружаю подбор…</p>}>
+        <Suspense fallback={<ApartmentPickerFallback />}>
           <ApartmentPicker />
         </Suspense>
       </Container>

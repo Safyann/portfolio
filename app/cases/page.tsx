@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CasesPage() {
   return (
-    <Section id="all-cases" eyebrow="Кейсы" title="Все кейсы">
+    <Section id="all-cases" eyebrow="Кейсы" title="Все кейсы" headingLevel="h1">
       <div>
         {CASES.map((caseStudy) => (
           <CaseCard key={caseStudy.slug} caseStudy={caseStudy} />

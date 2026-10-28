@@ -11,6 +11,7 @@ import {
   SORT_ORDERS,
   type CompletionQuarter,
   type NumberRange,
+  type PickerFilters,
   type RoomType,
   type SortOrder,
 } from '../model/types';
@@ -63,18 +64,22 @@ function rubToMillions(range: NumberRange): NumberRange {
   };
 }
 
-export function ApartmentPicker() {
+type ApartmentPickerViewProps = {
+  filters: PickerFilters;
+  onFiltersChange: (filters: PickerFilters) => void;
+};
+
+function ApartmentPickerView({ filters, onFiltersChange }: ApartmentPickerViewProps) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const { filters, setFilters } = useUrlFilters(PROJECT_IDS);
 
   const results = useMemo(() => applyFilters(APARTMENTS, filters), [filters]);
   const roomCounts = useMemo(() => countByRooms(APARTMENTS, filters), [filters]);
   const visibleResults = results.slice(0, visibleCount);
   const isFiltered = hasActiveFilters(filters);
 
-  const updateFilters = (patch: Partial<typeof filters>) => {
+  const updateFilters = (patch: Partial<PickerFilters>) => {
     setVisibleCount(PAGE_SIZE);
-    setFilters({ ...filters, ...patch });
+    onFiltersChange({ ...filters, ...patch });
   };
 
   const handleRoomToggle = (roomType: RoomType) => {
@@ -236,4 +241,20 @@ export function ApartmentPicker() {
       </section>
     </div>
   );
+}
+
+// Фильтры из URL. useSearchParams при статическом экспорте доступен только в браузере,
+// поэтому страница оборачивает этот компонент в Suspense с ApartmentPickerFallback.
+export function ApartmentPicker() {
+  const { filters, setFilters } = useUrlFilters(PROJECT_IDS);
+
+  return <ApartmentPickerView filters={filters} onFiltersChange={setFilters} />;
+}
+
+function ignoreFiltersChange() {}
+
+// Тот же подбор с фильтрами по умолчанию — попадает в статический HTML вместо пустой заглушки,
+// поэтому до загрузки JS страница уже показывает список и не прыгает при гидрации.
+export function ApartmentPickerFallback() {
+  return <ApartmentPickerView filters={DEFAULT_FILTERS} onFiltersChange={ignoreFiltersChange} />;
 }

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Golos_Text } from 'next/font/google';
 import type { ReactNode } from 'react';
 
-import { SITE } from '@/shared/config';
+import { OG_IMAGE, OPEN_GRAPH_BASE, SITE } from '@/shared/config';
 import '@/shared/styles/global.scss';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
@@ -16,7 +16,8 @@ const golos = Golos_Text({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  alternates: { canonical: '/' },
+  // canonical и og:url здесь не задаём: layout наследуют все страницы, включая 404, —
+  // каждая страница указывает свой адрес сама.
   title: {
     default: SITE.title,
     template: `%s — ${SITE.name}`,
@@ -24,17 +25,14 @@ export const metadata: Metadata = {
   description: SITE.description,
   authors: [{ name: SITE.name }],
   openGraph: {
-    type: 'website',
-    locale: 'ru_RU',
+    ...OPEN_GRAPH_BASE,
     title: SITE.title,
     description: SITE.description,
-    siteName: SITE.name,
-    url: '/',
   },
+  // Без title и description: иначе страницы кейсов унаследуют их от главной. Карточка берёт их из og:*.
   twitter: {
-    card: 'summary',
-    title: SITE.title,
-    description: SITE.description,
+    card: 'summary_large_image',
+    images: [OG_IMAGE.url],
   },
 };
 

@@ -59,8 +59,13 @@ function parseList<T extends string>(value: string | null, allowed: readonly T[]
   return allowed.filter((item) => unique.has(item));
 }
 
-function isRoomType(value: string): value is RoomType {
-  return (ROOM_TYPES as readonly string[]).includes(value);
+// Округляем до рубля и до сотых миллиона, чтобы в URL не попадали артефакты float вроде 12.300000000000001.
+function millionsToRub(millions: number | undefined): number | undefined {
+  return millions === undefined ? undefined : Math.round(millions * RUB_IN_MILLION);
+}
+
+function rubToMillions(rub: number | undefined): number | undefined {
+  return rub === undefined ? undefined : Math.round((rub / RUB_IN_MILLION) * 100) / 100;
 }
 
 function isSortOrder(value: string | null): value is SortOrder {
@@ -71,10 +76,11 @@ function isCompletionQuarter(value: string | null): value is CompletionQuarter {
   return value !== null && COMPLETION_PATTERN.test(value);
 }
 
+// Если «от» больше «до», при фильтрации меняем их местами, а не показываем пустой результат.
+// В URL и полях ввода остаётся то, что ввёл пользователь, — иначе значения перескакивали бы во время набора.
 function normalizeRange(range: NumberRange): NumberRange {
   const { min, max } = range;
 
-  // Пользователь мог перепутать «от» и «до» — меняем местами, а не показываем пустой результат.
   if (min !== undefined && max !== undefined && min > max) {
     return { min: max, max: min };
   }
@@ -89,19 +95,19 @@ export function parseFilters(params: URLSearchParams, knownProjectIds: readonly 
   const completionParam = params.get(PARAM.COMPLETION_BY);
 
   return {
-    price: normalizeRange({
-      min: priceMinMillions === undefined ? undefined : priceMinMillions * RUB_IN_MILLION,
-      max: priceMaxMillions === undefined ? undefined : priceMaxMillions * RUB_IN_MILLION,
-    }),
-    area: normalizeRange({
+    price: {
+      min: millionsToRub(priceMinMillions),
+      max: millionsToRub(priceMaxMillions),
+    },
+    area: {
       min: parsePositiveNumber(params.get(PARAM.AREA_MIN)),
       max: parsePositiveNumber(params.get(PARAM.AREA_MAX)),
-    }),
-    floor: normalizeRange({
+    },
+    floor: {
       min: parsePositiveNumber(params.get(PARAM.FLOOR_MIN)),
       max: parsePositiveNumber(params.get(PARAM.FLOOR_MAX)),
-    }),
-    rooms: parseList(params.get(PARAM.ROOMS), ROOM_TYPES).filter(isRoomType),
+    },
+    rooms: parseList(params.get(PARAM.ROOMS), ROOM_TYPES),
     projects: parseList(params.get(PARAM.PROJECTS), knownProjectIds),
     completionBy: isCompletionQuarter(completionParam) ? completionParam : undefined,
     sort: isSortOrder(sortParam) ? sortParam : DEFAULT_SORT,
@@ -117,8 +123,8 @@ function setNumber(params: URLSearchParams, key: string, value: number | undefin
 export function serializeFilters(filters: PickerFilters): string {
   const params = new URLSearchParams();
 
-  setNumber(params, PARAM.PRICE_MIN, filters.price.min === undefined ? undefined : filters.price.min / RUB_IN_MILLION);
-  setNumber(params, PARAM.PRICE_MAX, filters.price.max === undefined ? undefined : filters.price.max / RUB_IN_MILLION);
+  setNumber(params, PARAM.PRICE_MIN, rubToMillions(filters.price.min));
+  setNumber(params, PARAM.PRICE_MAX, rubToMillions(filters.price.max));
   setNumber(params, PARAM.AREA_MIN, filters.area.min);
   setNumber(params, PARAM.AREA_MAX, filters.area.max);
   setNumber(params, PARAM.FLOOR_MIN, filters.floor.min);
@@ -145,11 +151,13 @@ export function serializeFilters(filters: PickerFilters): string {
 }
 
 function isInRange(value: number, range: NumberRange): boolean {
-  if (range.min !== undefined && value < range.min) {
+  const { min, max } = normalizeRange(range);
+
+  if (min !== undefined && value < min) {
     return false;
   }
 
-  return range.max === undefined || value <= range.max;
+  return max === undefined || value <= max;
 }
 
 function matchesWithoutRooms(apartment: Apartment, filters: PickerFilters): boolean {

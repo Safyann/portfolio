@@ -94,16 +94,27 @@ describe('parseFilters / serializeFilters', () => {
     expect(parseFilters(params, PROJECT_IDS)).toEqual(filtersWith({ rooms: ['studio', '2'] }));
   });
 
-  it('меняет местами перепутанные «от» и «до»', () => {
-    const filters = parseFilters(new URLSearchParams('area_min=90&area_max=50'), PROJECT_IDS);
+  it('оставляет «от» и «до» как ввёл пользователь — поля не перескакивают во время набора', () => {
+    const filters = parseFilters(new URLSearchParams('area_min=90&area_max=5'), PROJECT_IDS);
 
-    expect(filters.area).toEqual({ min: 50, max: 90 });
+    expect(filters.area).toEqual({ min: 90, max: 5 });
+  });
+
+  it('не тащит в URL артефакты float', () => {
+    expect(serializeFilters(filtersWith({ price: { min: 12_300_000 } }))).toBe('price_min=12.3');
+    expect(parseFilters(new URLSearchParams('price_min=0.1'), PROJECT_IDS).price.min).toBe(100_000);
   });
 });
 
 describe('applyFilters', () => {
   it('без фильтров возвращает всё, отсортированное по цене', () => {
     expect(applyFilters(SAMPLE, DEFAULT_FILTERS).map((apartment) => apartment.id)).toEqual(['d', 'a', 'b', 'c']);
+  });
+
+  it('при перепутанных «от» и «до» фильтрует по исправленному диапазону', () => {
+    const result = applyFilters(SAMPLE, filtersWith({ area: { min: 60, max: 40 } }));
+
+    expect(result.map((apartment) => apartment.id)).toEqual(['a', 'b']);
   });
 
   it('учитывает границы диапазонов включительно', () => {

@@ -15,6 +15,14 @@
   min-height: 64px;
 }
 
+// Высота области нажатия — 44px (WCAG 2.5.5), при этом шапка остаётся 64px.
+.logo,
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .logo {
   font-weight: 500;
   text-decoration: none;

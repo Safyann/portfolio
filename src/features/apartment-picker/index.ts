@@ -1,1 +1,1 @@
-export { ApartmentPicker } from './ui/ApartmentPicker';
+export { ApartmentPicker, ApartmentPickerFallback } from './ui/ApartmentPicker';
