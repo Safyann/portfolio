@@ -29,3 +29,16 @@
     color: var(--color-accent);
   }
 }
+
+// Порядок появления шапки демо — читается глобальным классом .enter.
+.eyebrow {
+  --reveal-order: 0;
+}
+
+.title {
+  --reveal-order: 1;
+}
+
+.lead {
+  --reveal-order: 2;
+}

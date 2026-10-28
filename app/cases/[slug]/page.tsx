@@ -55,21 +55,21 @@ export default async function CasePage({ params }: CasePageProps) {
         <Link href="/cases/" className={styles.back}>
           ← Все кейсы
         </Link>
-        <p className={styles.meta}>
+        <p className={`${styles.meta} enter`}>
           {caseStudy.client} · {caseStudy.industry}
         </p>
-        <h1 className={styles.title}>{caseStudy.title}</h1>
-        <p className={styles.summary}>{caseStudy.summary}</p>
+        <h1 className={`${styles.title} enter`}>{caseStudy.title}</h1>
+        <p className={`${styles.summary} enter`}>{caseStudy.summary}</p>
 
         <div className={styles.layout}>
           <div>
-            <section className={styles.block} aria-labelledby="task-title">
+            <section className={`${styles.block} reveal`} aria-labelledby="task-title">
               <h2 id="task-title" className={styles.heading}>
                 Задача
               </h2>
               <p>{caseStudy.task}</p>
             </section>
-            <section className={styles.block} aria-labelledby="contribution-title">
+            <section className={`${styles.block} reveal`} aria-labelledby="contribution-title">
               <h2 id="contribution-title" className={styles.heading}>
                 Что я сделала
               </h2>
@@ -86,7 +86,7 @@ export default async function CasePage({ params }: CasePageProps) {
             ) : null}
           </div>
 
-          <aside className={styles.aside} aria-label="Факты о проекте">
+          <aside className={`${styles.aside} enter ${styles.asideEnter}`} aria-label="Факты о проекте">
             {caseStudy.metric ? (
               <div>
                 <p className={styles.metricValue}>{caseStudy.metric.value}</p>
@@ -120,7 +120,7 @@ export default async function CasePage({ params }: CasePageProps) {
         </div>
 
         {nextCase && nextCase.slug !== caseStudy.slug ? (
-          <nav className={styles.next} aria-label="Следующий кейс">
+          <nav className={`${styles.next} reveal`} aria-label="Следующий кейс">
             <p className={styles.note}>Следующий кейс</p>
             <Link href={`/cases/${nextCase.slug}/`} className={styles.nextLink}>
               {nextCase.client}: {nextCase.title} →

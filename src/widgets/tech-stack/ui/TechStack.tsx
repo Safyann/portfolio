@@ -18,7 +18,7 @@ export function TechStack() {
     <Section id="stack" eyebrow="Стек" title="Технологии">
       <div className={styles.groups}>
         {STACK_GROUPS.map((group) => (
-          <div key={group.label} className={styles.group}>
+          <div key={group.label} className={`${styles.group} reveal`}>
             <h3 className={styles.label}>{group.label}</h3>
             <ChipList items={group.items} label={group.label} />
           </div>

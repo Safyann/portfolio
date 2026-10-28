@@ -34,3 +34,20 @@
   flex-wrap: wrap;
   gap: var(--space-3);
 }
+
+// Порядок появления элементов первого экрана — читается глобальным классом .enter.
+.eyebrow {
+  --reveal-order: 0;
+}
+
+.title {
+  --reveal-order: 1;
+}
+
+.lead {
+  --reveal-order: 2;
+}
+
+.actions {
+  --reveal-order: 3;
+}

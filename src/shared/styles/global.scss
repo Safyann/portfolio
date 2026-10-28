@@ -120,3 +120,35 @@ img {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+// Анимации появления. Только CSS: без JS контент виден сразу, без поддержки браузером — просто без анимации.
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-shift, 24px));
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  // Первый экран — при загрузке, с задержкой по порядку: --reveal-order задаётся у элемента.
+  .enter {
+    --reveal-shift: 16px;
+
+    animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--reveal-order, 0) * 80ms);
+  }
+
+  // Всё ниже первого экрана — по мере прокрутки, привязано к положению элемента во вьюпорте.
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}

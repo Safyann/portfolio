@@ -12,7 +12,7 @@ export function Contacts() {
       lead="Ищу позицию Senior Frontend в продуктовой команде: удалённо по России или офис / гибрид в Екатеринбурге."
     >
       <dl className={styles.list}>
-        <div className={styles.item}>
+        <div className={`${styles.item} reveal`}>
           <dt className={styles.label}>Telegram</dt>
           <dd>
             <a className={styles.link} href={SITE.telegramUrl} target="_blank" rel="noopener noreferrer">
@@ -20,7 +20,7 @@ export function Contacts() {
             </a>
           </dd>
         </div>
-        <div className={styles.item}>
+        <div className={`${styles.item} reveal`}>
           <dt className={styles.label}>GitHub</dt>
           <dd>
             <a className={styles.link} href={SITE.githubUrl} target="_blank" rel="noopener noreferrer">

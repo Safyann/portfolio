@@ -7,17 +7,17 @@ export function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <Container>
-        <p className={styles.eyebrow}>
+        <p className={`${styles.eyebrow} enter`}>
           {SITE.role} · {SITE.experienceYears} лет в коммерческой разработке
         </p>
-        <h1 id="hero-title" className={styles.title}>
+        <h1 id="hero-title" className={`${styles.title} enter`}>
           Делаю быстрые и аккуратные интерфейсы на React, Next.js и Vue
         </h1>
-        <p className={styles.lead}>
+        <p className={`${styles.lead} enter`}>
           Сайт продаж Sminex, личный кабинет Московской биржи, сайт и админ-панель Prinzip. Архитектура фронтенда,
           UI-kit, SSR и code review.
         </p>
-        <div className={styles.actions}>
+        <div className={`${styles.actions} enter`}>
           <ButtonLink href={SITE.telegramUrl} variant="primary" external>
             Написать в Telegram
           </ButtonLink>

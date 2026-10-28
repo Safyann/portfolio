@@ -13,7 +13,7 @@ export function CaseCard({ caseStudy }: CaseCardProps) {
   const { slug, client, industry, title, summary, stack, metric } = caseStudy;
 
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} reveal`}>
       <div>
         <p className={styles.meta}>
           {client} · {industry}

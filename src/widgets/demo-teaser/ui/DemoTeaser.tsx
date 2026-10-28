@@ -11,7 +11,7 @@ export function DemoTeaser() {
       title="Параметрический подбор квартир"
       lead="Та же задача, что я решала на сайте Sminex, — но своя реализация на вымышленных данных. Код открыт."
     >
-      <div className={styles.card}>
+      <div className={`${styles.card} reveal`}>
         <ul className={styles.list}>
           <li>Фильтры по цене, площади, этажу, комнатам, проекту и сроку сдачи</li>
           <li>Состояние фильтров хранится в URL — подборкой можно поделиться</li>

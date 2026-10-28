@@ -17,7 +17,7 @@ export function Section({ id, eyebrow, title, children, lead }: SectionProps) {
   return (
     <section id={id} className={styles.section} aria-labelledby={headingId}>
       <Container>
-        <header className={styles.header}>
+        <header className={`${styles.header} reveal`}>
           <p className={styles.eyebrow}>{eyebrow}</p>
           <h2 id={headingId} className={styles.title}>
             {title}

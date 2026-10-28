@@ -123,3 +123,21 @@
     color: var(--color-accent);
   }
 }
+
+// Порядок появления шапки кейса — читается глобальным классом .enter.
+.meta {
+  --reveal-order: 0;
+}
+
+.title {
+  --reveal-order: 1;
+}
+
+.summary {
+  --reveal-order: 2;
+}
+
+// Карточка фактов на десктопе видна сразу — появляется вместе с шапкой, а не по прокрутке.
+.asideEnter {
+  --reveal-order: 3;
+}
