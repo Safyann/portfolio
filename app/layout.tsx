@@ -15,6 +15,8 @@ const golos = Golos_Text({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
+  alternates: { canonical: '/' },
   title: {
     default: SITE.title,
     template: `%s — ${SITE.name}`,
@@ -27,6 +29,7 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
     siteName: SITE.name,
+    url: '/',
   },
   twitter: {
     card: 'summary',

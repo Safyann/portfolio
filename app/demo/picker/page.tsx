@@ -10,6 +10,7 @@ import styles from './page.module.scss';
 export const metadata: Metadata = {
   title: 'Демо: подбор квартир',
   description: 'Параметрический подбор квартир на вымышленных данных: фильтры, сортировка, состояние в URL.',
+  alternates: { canonical: '/demo/picker/' },
 };
 
 export default function PickerDemoPage() {

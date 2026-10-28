@@ -34,4 +34,4 @@ src/widgets           секции страниц
 
 ## Деплой
 
-Push в `main` → workflow `.github/workflows/deploy.yml` собирает сайт и публикует на GitHub Pages. Для репозитория не вида `<user>.github.io` base path подставляется автоматически. Свой домен: Settings → Pages → Custom domain.
+Push в `main` → workflow `.github/workflows/deploy.yml` собирает сайт и публикует на GitHub Pages. Для репозитория не вида `<user>.github.io` base path подставляется автоматически. Сайт: https://safyann.ru (Settings → Pages → Custom domain).

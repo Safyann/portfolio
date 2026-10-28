@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: CasePageProps): Promise<Metad
   return {
     title: `${caseStudy.client}: ${caseStudy.title}`,
     description: caseStudy.summary,
+    alternates: { canonical: `/cases/${caseStudy.slug}/` },
     openGraph: {
+      url: `/cases/${caseStudy.slug}/`,
       title: `${caseStudy.client}: ${caseStudy.title} — ${SITE.name}`,
       description: caseStudy.summary,
     },
