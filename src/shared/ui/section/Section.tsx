@@ -20,7 +20,7 @@ export function Section({ id, eyebrow, title, children, lead, headingLevel = 'h2
   return (
     <section id={id} className={styles.section} aria-labelledby={headingId}>
       <Container>
-        <header className={`${styles.header} reveal`}>
+        <header className={`${styles.header} reveal`} suppressHydrationWarning>
           <p className={styles.eyebrow}>{eyebrow}</p>
           <Heading id={headingId} className={styles.title}>
             {title}

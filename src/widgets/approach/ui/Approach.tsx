@@ -34,7 +34,7 @@ export function Approach() {
     <Section id="approach" eyebrow="Подход" title="Как я работаю">
       <ul className={styles.grid}>
         {PRINCIPLES.map((principle) => (
-          <li key={principle.title} className="reveal">
+          <li key={principle.title} className="reveal" suppressHydrationWarning>
             <h3 className={styles.title}>{principle.title}</h3>
             <p className={styles.text}>{principle.text}</p>
           </li>

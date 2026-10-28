@@ -121,24 +121,21 @@ img {
   white-space: nowrap;
 }
 
-// Анимации появления. Только CSS: без JS контент виден сразу, без поддержки браузером — просто без анимации.
-@keyframes fade-up {
+// Анимации появления как на sminex.com: прозрачность и сдвиг вверх на 2rem, один раз.
+// У прозрачности и сдвига разные кривые, поэтому это две анимации / два перехода.
+@keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(var(--reveal-shift, 24px));
   }
 
   to {
     opacity: 1;
-    transform: none;
   }
 }
 
-// Только сдвиг, без прозрачности — для h1: он остаётся видимым, даже если анимация не запустится
-// (превью ссылок, фоновая вкладка), и не откладывает замер LCP.
 @keyframes rise {
   from {
-    transform: translateY(var(--reveal-shift, 24px));
+    transform: translateY(2rem);
   }
 
   to {
@@ -147,24 +144,26 @@ img {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  // Первый экран — при загрузке, с задержкой по порядку: --reveal-order задаётся у элемента.
+  // Первый экран — при загрузке, по очереди: --reveal-order задаётся у элемента. Работает без JS.
   .enter {
-    --reveal-shift: 16px;
-
-    animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--reveal-order, 0) * 80ms);
+    animation:
+      fade-in 1s ease-in-out both,
+      rise 0.8s ease-out both;
+    animation-delay: calc(var(--reveal-order, 0) * 100ms);
   }
 
-  h1.enter {
-    animation-name: rise;
+  // Ниже первого экрана — когда блок попадает в область видимости. Прячем только после того,
+  // как скрипт из layout поставил data-reveal на <html>: без JS контент виден сразу.
+  [data-reveal] .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 1s ease-in-out,
+      transform 0.8s ease-out;
   }
 
-  // Всё ниже первого экрана — по мере прокрутки, привязано к положению элемента во вьюпорте.
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: fade-up linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
+  [data-reveal] .reveal[data-revealed] {
+    opacity: 1;
+    transform: none;
   }
 }

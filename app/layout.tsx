@@ -3,6 +3,7 @@ import { Golos_Text } from 'next/font/google';
 import type { ReactNode } from 'react';
 
 import { OG_IMAGE, OPEN_GRAPH_BASE, SITE } from '@/shared/config';
+import { REVEAL_SCRIPT } from '@/shared/lib';
 import '@/shared/styles/global.scss';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
@@ -45,7 +46,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ru" className={golos.variable}>
+    // data-reveal на <html> ставит инлайн-скрипт до гидрации — отсюда suppressHydrationWarning.
+    <html lang="ru" className={golos.variable} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_SCRIPT }} />
+      </head>
       <body>
         <Header />
         <main>{children}</main>

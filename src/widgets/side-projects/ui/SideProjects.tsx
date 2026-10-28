@@ -13,7 +13,7 @@ export function SideProjects() {
     >
       <ul className={styles.grid}>
         {SIDE_PROJECTS.map((project) => (
-          <li key={project.name} className={`${styles.card} reveal`}>
+          <li key={project.name} className={`${styles.card} reveal`} suppressHydrationWarning>
             <p className={styles.meta}>
               {project.employer} · {project.period}
             </p>

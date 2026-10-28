@@ -64,13 +64,13 @@ export default async function CasePage({ params }: CasePageProps) {
 
         <div className={styles.layout}>
           <div>
-            <section className={`${styles.block} reveal`} aria-labelledby="task-title">
+            <section className={`${styles.block} reveal`} suppressHydrationWarning aria-labelledby="task-title">
               <h2 id="task-title" className={styles.heading}>
                 Задача
               </h2>
               <p>{caseStudy.task}</p>
             </section>
-            <section className={`${styles.block} reveal`} aria-labelledby="contribution-title">
+            <section className={`${styles.block} reveal`} suppressHydrationWarning aria-labelledby="contribution-title">
               <h2 id="contribution-title" className={styles.heading}>
                 Что я сделала
               </h2>
@@ -121,7 +121,7 @@ export default async function CasePage({ params }: CasePageProps) {
         </div>
 
         {nextCase && nextCase.slug !== caseStudy.slug ? (
-          <nav className={`${styles.next} reveal`} aria-label="Следующий кейс">
+          <nav className={`${styles.next} reveal`} suppressHydrationWarning aria-label="Следующий кейс">
             <p className={styles.note}>Следующий кейс</p>
             <Link href={`/cases/${nextCase.slug}/`} className={styles.nextLink}>
               {nextCase.client}: {nextCase.title} →
