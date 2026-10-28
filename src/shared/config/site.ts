@@ -12,7 +12,7 @@ export const SITE = {
   githubHandle: 'Safyann',
   // TODO(safyann): положить PDF резюме в public/ и указать путь — до этого кнопка «Скачать резюме» скрыта.
   resumeUrl: null as string | null,
-  sourceUrl: 'https://github.com/Safyann/portfolio',
+  sourceUrl: 'https://github.com/Safyann/portfolio-next',
 } as const;
 
 export const NAV_ITEMS = [
