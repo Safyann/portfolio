@@ -2,7 +2,7 @@
   "name": "safyann-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Портфолио Алёны Сафьянниковой — Senior Frontend (React / Next.js, Vue / Nuxt, TypeScript)",
+  "description": "Портфолио Алены Сафьянниковой — Senior Frontend (React / Next.js, Vue / Nuxt, TypeScript)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

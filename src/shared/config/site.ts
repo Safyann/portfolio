@@ -1,10 +1,10 @@
 export const SITE = {
-  name: 'Алёна Сафьянникова',
-  shortName: 'Алёна С.',
+  name: 'Алена Сафьянникова',
+  shortName: 'Алена С.',
   url: 'https://safyann.ru',
   role: 'Senior Frontend',
   experienceYears: 8,
-  title: 'Алёна Сафьянникова — Senior Frontend (React, Next.js, Vue, TypeScript)',
+  title: 'Алена Сафьянникова — Senior Frontend (React, Next.js, Vue, TypeScript)',
   description:
     // До ~160 символов — дальше поисковики обрезают сниппет.
     'Senior Frontend, 8 лет. React / Next.js и Vue / Nuxt на TypeScript. Сайт продаж Sminex, кабинет Московской биржи, сайт и админка Prinzip.',
