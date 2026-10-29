@@ -2,9 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-  backdrop-filter: saturate(160%) blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  // Плотный фон без размытия и без линии снизу: шапка отделяется от контента своим фоном.
+  background: var(--color-bg);
 }
 
 .inner {
@@ -48,7 +47,11 @@
   display: flex;
   gap: var(--space-4);
   overflow-x: auto;
-  font-size: 15px;
+  font-size: var(--fs-small);
+
+  @media (min-width: 560px) {
+    font-size: var(--fs-body);
+  }
 
   @media (min-width: 768px) {
     gap: var(--space-6);

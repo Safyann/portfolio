@@ -1,27 +1,32 @@
+// Две крупные плашки во всю ширину сетки — секция не прижата к левому краю.
 .list {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-5);
   margin-bottom: var(--space-6);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .item {
   display: grid;
-  gap: var(--space-1);
-
-  @media (min-width: 768px) {
-    grid-template-columns: 200px minmax(0, 1fr);
-    gap: var(--space-6);
-  }
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
 .label {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
 }
 
 .link {
   color: var(--color-accent);
-  font-size: 20px;
+  font-size: var(--fs-title);
   font-weight: 500;
+  line-height: 1.15;
   text-decoration: none;
 
   &:hover {

@@ -1,0 +1,93 @@
+// Фрагмент интерфейса (data-ui): поверхность задаёт заливка, без обводок.
+.teaser {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.caption {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+}
+
+.toggles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.toggle {
+  min-height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-surface-strong);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    background: var(--color-border-strong);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &[aria-pressed='true'] {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+}
+
+.count {
+  font-size: var(--fs-lead);
+  font-weight: 500;
+}
+
+.results {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.result {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.project {
+  color: var(--color-text-secondary);
+}
+
+.price {
+  color: var(--color-accent);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.more {
+  justify-self: start;
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle:active {
+    transform: none;
+  }
+}

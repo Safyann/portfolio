@@ -5,23 +5,27 @@ import styles from './Section.module.scss';
 
 type SectionProps = {
   id: string;
-  eyebrow: string;
   title: string;
   children: ReactNode;
   lead?: string;
   // h1 — когда секция и есть вся страница (список кейсов, 404); на главной h1 занят первым экраном.
   headingLevel?: 'h1' | 'h2';
+  // Секции разделяются отступом, а не линией; surface — ступень фона для смены ритма.
+  tone?: 'default' | 'surface';
 };
 
-export function Section({ id, eyebrow, title, children, lead, headingLevel = 'h2' }: SectionProps) {
+export function Section({ id, title, children, lead, headingLevel = 'h2', tone = 'default' }: SectionProps) {
   const headingId = `${id}-title`;
   const Heading = headingLevel;
 
   return (
-    <section id={id} className={styles.section} aria-labelledby={headingId}>
+    <section
+      id={id}
+      className={tone === 'surface' ? `${styles.section} ${styles.surface}` : styles.section}
+      aria-labelledby={headingId}
+    >
       <Container>
         <header className={`${styles.header} reveal`} suppressHydrationWarning>
-          <p className={styles.eyebrow}>{eyebrow}</p>
           <Heading id={headingId} className={styles.title}>
             {title}
           </Heading>

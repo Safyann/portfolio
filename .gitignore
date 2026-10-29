@@ -16,3 +16,7 @@ resume-*.md
 
 # Внутренняя спецификация с рабочими заметками — только локально.
 docs/spec.md
+
+# Артефакты аудита дизайна (taste-skill, design-motion-principles)
+.taste-skill/
+motion-audits/

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { CASES, getCaseBySlug } from '@/entities/case';
 import { OPEN_GRAPH_BASE, SITE } from '@/shared/config';
-import { ButtonLink, ChipList, Container } from '@/shared/ui';
+import { ButtonLink, ChipList, Container, Screenshot } from '@/shared/ui';
 
 import styles from './page.module.scss';
 
@@ -53,14 +53,21 @@ export default async function CasePage({ params }: CasePageProps) {
   return (
     <article className={styles.page}>
       <Container>
-        <Link href="/cases/" className={styles.back}>
-          ← Все кейсы
-        </Link>
+        <h1 className={`${styles.title} enter`}>{caseStudy.title}</h1>
         <p className={`${styles.meta} enter`}>
           {caseStudy.client} · {caseStudy.industry}
         </p>
-        <h1 className={`${styles.title} enter`}>{caseStudy.title}</h1>
         <p className={`${styles.summary} enter`}>{caseStudy.summary}</p>
+        {caseStudy.image ? (
+          <div className={`${styles.cover} enter`}>
+            <Screenshot
+              name={caseStudy.image.name}
+              alt={caseStudy.image.alt}
+              sizes="(min-width: 1184px) 1120px, 100vw"
+              priority
+            />
+          </div>
+        ) : null}
 
         <div className={styles.layout}>
           <div>
@@ -128,6 +135,9 @@ export default async function CasePage({ params }: CasePageProps) {
             </Link>
           </nav>
         ) : null}
+        <Link href="/cases/" className={styles.back}>
+          ← Все кейсы
+        </Link>
       </Container>
     </article>
   );

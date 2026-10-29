@@ -31,7 +31,7 @@ const PRINCIPLES = [
 
 export function Approach() {
   return (
-    <Section id="approach" eyebrow="Подход" title="Как я работаю">
+    <Section id="approach" title="Как я работаю">
       <ul className={styles.grid}>
         {PRINCIPLES.map((principle) => (
           <li key={principle.title} className="reveal" suppressHydrationWarning>

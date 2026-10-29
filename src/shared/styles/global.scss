@@ -11,7 +11,16 @@
   --color-accent-soft: #e1f5ee;
   --color-on-accent: #ffffff;
 
+  --color-surface-strong: #eceee9;
+
   --font-sans: var(--font-golos), system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  // Пять размеров на всю страницу: крупный, заголовок, лид, текст, мелкий.
+  --fs-display: clamp(48px, 8vw, 116px);
+  --fs-title: clamp(28px, 3.4vw, 40px);
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-small: 14px;
 
   --container: 1120px;
   --gutter: 16px;
@@ -50,6 +59,7 @@
     --color-accent-hover: #7fd8b9;
     --color-accent-soft: #10302a;
     --color-on-accent: #04342c;
+    --color-surface-strong: #222622;
 
     color-scheme: dark;
   }
@@ -78,7 +88,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
-  font-size: 17px;
+  font-size: var(--fs-body);
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

@@ -4,12 +4,13 @@
   gap: 6px;
 }
 
+// Заливка на ступень темнее фона вместо обводки 1px.
 .chip {
-  padding: 2px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--color-surface-strong);
   color: var(--color-text-secondary);
-  font-size: 13px;
+  font-size: var(--fs-small);
   line-height: 1.6;
   white-space: nowrap;
 }

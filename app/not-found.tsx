@@ -9,13 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <Section
-      id="not-found"
-      eyebrow="404"
-      title="Такой страницы нет"
-      lead="Возможно, ссылка устарела."
-      headingLevel="h1"
-    >
+    <Section id="not-found" title="Страница не найдена" lead="Ошибка 404: возможно, ссылка устарела." headingLevel="h1">
       <ButtonLink href="/" variant="primary">
         На главную
       </ButtonLink>

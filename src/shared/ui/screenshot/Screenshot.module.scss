@@ -1,0 +1,8 @@
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1440 / 700;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--color-surface);
+}

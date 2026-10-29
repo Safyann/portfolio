@@ -1,21 +1,30 @@
 .footer {
-  padding: var(--space-6) 0;
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: 14px;
+  padding: var(--space-8) 0 var(--space-6);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+
+  a {
+    color: var(--color-text);
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
 }
 
-.inner {
+.name {
+  margin-bottom: var(--space-6);
+  color: var(--color-text);
+  font-size: var(--fs-title);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--space-3);
-}
-
-.link {
-  color: var(--color-text-secondary);
-
-  &:hover {
-    color: var(--color-text);
-  }
 }

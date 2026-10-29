@@ -105,7 +105,8 @@ function ApartmentPickerView({ filters, onFiltersChange }: ApartmentPickerViewPr
   };
 
   return (
-    <div className={styles.picker}>
+    // data-ui: это рабочий интерфейс — у полей и переключателей остаются свои рамки.
+    <div className={styles.picker} data-ui>
       <form className={styles.filters} aria-label="Фильтры квартир" onSubmit={(event) => event.preventDefault()}>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Комнаты</legend>

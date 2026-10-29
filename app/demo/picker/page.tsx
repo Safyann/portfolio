@@ -18,8 +18,7 @@ export default function PickerDemoPage() {
     <div className={styles.page}>
       <Container>
         <header className={styles.header}>
-          <p className={`${styles.eyebrow} enter`}>Живое демо</p>
-          <h1 className={`${styles.title} enter`}>Подбор квартир по параметрам</h1>
+          <h1 className={`${styles.title} enter`}>Подбор квартир — живое демо</h1>
           <p className={`${styles.lead} enter`}>
             Своя реализация задачи, которую я решала на сайте Sminex. Данные вымышленные. Фильтры сохраняются в адресе
             страницы — подборку можно отправить ссылкой.{' '}

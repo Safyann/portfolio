@@ -15,7 +15,7 @@ const STACK_GROUPS = [
 
 export function TechStack() {
   return (
-    <Section id="stack" eyebrow="Стек" title="Технологии">
+    <Section id="stack" title="Стек">
       <div className={styles.groups}>
         {STACK_GROUPS.map((group) => (
           <div key={group.label} className={`${styles.group} reveal`} suppressHydrationWarning>
