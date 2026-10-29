@@ -172,7 +172,7 @@ function ApartmentPickerView({ filters, onFiltersChange }: ApartmentPickerViewPr
                 />
                 <span>
                   {project.name}
-                  <span className={styles.checkboxHint}> · {project.district}</span>
+                  <span className={styles.checkboxHint}>{project.district}</span>
                 </span>
               </label>
             ))}

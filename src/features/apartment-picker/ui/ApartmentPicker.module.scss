@@ -123,24 +123,29 @@
   gap: var(--space-2);
 }
 
+// Флажок не сжимается, когда подпись переносится, и выровнен по первой строке текста.
 .checkbox {
   display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: 32px;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-height: 44px;
   cursor: pointer;
 
   input {
-    width: 18px;
-    height: 18px;
-    margin: 0;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin: 4px 0 0;
     accent-color: var(--color-accent);
+    cursor: pointer;
   }
 }
 
+// Район — отдельной строкой у каждого проекта, чтобы перенос был одинаковым.
 .checkboxHint {
-  color: var(--color-text-muted);
-  font-size: 14px;
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
 }
 
 .selectField {

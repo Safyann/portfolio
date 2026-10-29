@@ -1,16 +1,21 @@
+// align-items: flex-start — чипы не растягиваются, если список оказался выше своего содержимого.
 .list {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 6px;
 }
 
-// Заливка на ступень темнее фона вместо обводки 1px.
+// Заливка на ступень темнее фона вместо обводки 1px. Высота фиксирована, текст по центру.
 .chip {
-  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
   border-radius: 999px;
   background: var(--color-surface-strong);
   color: var(--color-text-secondary);
   font-size: var(--fs-small);
-  line-height: 1.6;
+  line-height: 1;
   white-space: nowrap;
 }
