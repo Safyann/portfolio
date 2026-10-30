@@ -14,13 +14,12 @@ export const SITE = {
   telegramHandle: '@safyann',
   githubUrl: 'https://github.com/Safyann',
   githubHandle: 'Safyann',
-  // Поля со значением null на сайте не показываются — заполнить, когда будут данные.
-  // TODO(safyann): положить PDF резюме в public/ (например, /resume.pdf) — появятся кнопки в шапке и на первом экране.
-  resumeUrl: null as string | null,
-  // Предпочитаемый способ связи по резюме на hh.
+  // Поля со значением null на сайте не показываются.
+  // Путь от корня: относительный 'resume.pdf' на страницах кейсов указывал бы на /cases/<slug>/resume.pdf.
+  // Файл — public/resume.pdf; пока его нет, кнопки «Резюме (PDF)» ведут на 404.
+  resumeUrl: '/resume.pdf' as string | null,
   email: 'alena_safyanniko@mail.ru' as string | null,
-  // TODO(safyann): публичная ссылка на резюме на hh.ru.
-  hhUrl: null as string | null,
+  hhUrl: 'https://ekaterinburg.hh.ru/resume/99c0ccd7ff024c040c0039ed1f706f48774575' as string | null,
   sourceUrl: 'https://github.com/Safyann/portfolio',
 } as const;
 
