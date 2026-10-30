@@ -1,9 +1,11 @@
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
+import storybook from 'eslint-plugin-storybook';
 
 const eslintConfig = [
   ...nextVitals,
   ...nextTs,
+  ...storybook.configs['flat/recommended'],
   {
     rules: {
       eqeqeq: ['error', 'always'],
@@ -17,7 +19,7 @@ const eslintConfig = [
     },
   },
   {
-    ignores: ['.next/**', 'out/**', 'node_modules/**', 'next-env.d.ts'],
+    ignores: ['.next/**', 'out/**', 'node_modules/**', 'next-env.d.ts', '!.storybook'],
   },
 ];
 

@@ -12,7 +12,7 @@ export function Footer() {
         <div className={styles.row}>
           <p>
             {SITE.role} · <a href={SITE.telegramUrl}>Telegram {SITE.telegramHandle}</a> ·{' '}
-            <a href={SITE.githubUrl}>GitHub</a>
+            <a href={SITE.githubUrl}>GitHub</a> · <a href={SITE.storybookPath}>UI-kit в Storybook</a>
           </p>
           <p>
             © {new Date().getFullYear()} · Сайт на Next.js и TypeScript,{' '}

@@ -40,6 +40,10 @@ jobs:
           # Пусто для своего домена и для репозитория <user>.github.io, иначе — /<repo>.
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
+      # После сборки сайта: next build пересоздаёт out/ целиком.
+      - name: Build Storybook
+        run: npm run build-storybook
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

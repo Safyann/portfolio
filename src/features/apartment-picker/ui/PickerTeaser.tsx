@@ -40,10 +40,10 @@ export function PickerTeaser() {
             type="button"
             className={styles.toggle}
             aria-pressed={rooms.includes(roomType)}
-            aria-label={`${formatRooms(roomType)}: ${formatApartmentsCount(roomCounts[roomType])}`}
             onClick={() => handleToggle(roomType)}
           >
             {formatRoomsShort(roomType)}
+            <span className="visually-hidden">, {formatApartmentsCount(roomCounts[roomType])}</span>
           </button>
         ))}
       </div>

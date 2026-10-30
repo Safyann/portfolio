@@ -21,6 +21,11 @@ export const SITE = {
   email: 'alena_safyanniko@mail.ru' as string | null,
   hhUrl: 'https://ekaterinburg.hh.ru/resume/99c0ccd7ff024c040c0039ed1f706f48774575' as string | null,
   sourceUrl: 'https://github.com/Safyann/portfolio',
+  // Витрина компонентов собирается рядом с сайтом в out/storybook — это не маршрут Next.js.
+  storybookPath: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/storybook/`,
+  // Пулл-реквесты студентов HTML Academy, где Алена была наставником-ревьюером.
+  mentoringUrl:
+    'https://github.com/search?q=involves%3ASafyann+is%3Apr+org%3Ahtmlacademy-htmlcss+org%3Ahtmlacademy-adaptive+org%3Ahtmlacademy-javascript+org%3Ahtmlacademy-univer-javascript-1&type=pullrequests',
 } as const;
 
 // Статус поиска работы. updatedAt — дата последней проверки статуса, показывается рядом с ним.

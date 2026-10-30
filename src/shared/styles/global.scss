@@ -46,23 +46,33 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0f110f;
-    --color-surface: #171a17;
-    --color-text: #eef0ec;
-    --color-text-secondary: #b3b9b2;
-    --color-text-muted: #8e958d;
-    --color-border: #262a26;
-    --color-border-strong: #3a403a;
-    --color-accent: #5dcaa5;
-    --color-accent-hover: #7fd8b9;
-    --color-accent-soft: #10302a;
-    --color-on-accent: #04342c;
-    --color-surface-strong: #222622;
+@mixin dark-tokens {
+  --color-bg: #0f110f;
+  --color-surface: #171a17;
+  --color-text: #eef0ec;
+  --color-text-secondary: #b3b9b2;
+  --color-text-muted: #8e958d;
+  --color-border: #262a26;
+  --color-border-strong: #3a403a;
+  --color-accent: #5dcaa5;
+  --color-accent-hover: #7fd8b9;
+  --color-accent-soft: #10302a;
+  --color-on-accent: #04342c;
+  --color-surface-strong: #222622;
 
-    color-scheme: dark;
+  color-scheme: dark;
+}
+
+// Тема по системной настройке; data-theme на <html> — явный выбор, он важнее.
+// Сайт атрибут не ставит, им пользуется переключатель темы в Storybook.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-tokens;
   }
+}
+
+:root[data-theme='dark'] {
+  @include dark-tokens;
 }
 
 *,

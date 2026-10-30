@@ -4,7 +4,7 @@ import { useMemo, useState, type ChangeEvent } from 'react';
 
 import { APARTMENTS, PROJECTS } from '../lib/apartments';
 import { applyFilters, countByRooms, DEFAULT_FILTERS, getBounds, hasActiveFilters } from '../lib/filters';
-import { formatApartmentsCount, formatCompletion, formatRoomsShort } from '../lib/format';
+import { formatApartmentsCount, formatApartmentsWord, formatCompletion, formatRoomsShort } from '../lib/format';
 import { useUrlFilters } from '../lib/use-url-filters';
 import {
   ROOM_TYPES,
@@ -120,13 +120,14 @@ function ApartmentPickerView({ filters, onFiltersChange }: ApartmentPickerViewPr
                   type="button"
                   className={styles.toggle}
                   aria-pressed={isSelected}
-                  aria-label={`${formatRoomsShort(roomType)}: ${formatApartmentsCount(roomCounts[roomType])}`}
                   disabled={!isSelected && roomCounts[roomType] === 0}
                   onClick={() => handleRoomToggle(roomType)}
                 >
-                  <span>{formatRoomsShort(roomType)}</span>
-                  <span className={styles.toggleCount} aria-hidden="true">
+                  {/* Доступное имя начинается с видимого текста («2 32 квартиры») — WCAG 2.5.3. */}
+                  <span>{formatRoomsShort(roomType)}</span>{' '}
+                  <span className={styles.toggleCount}>
                     {roomCounts[roomType]}
+                    <span className="visually-hidden"> {formatApartmentsWord(roomCounts[roomType])}</span>
                   </span>
                 </button>
               );
