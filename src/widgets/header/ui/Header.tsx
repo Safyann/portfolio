@@ -29,6 +29,12 @@ export function Header() {
             ))}
           </ul>
         </nav>
+        {SITE.resumeUrl ? (
+          // Файл, который рекрутер перешлёт нанимающему менеджеру, — всегда под рукой.
+          <a className={styles.resume} href={SITE.resumeUrl} download>
+            Резюме (PDF)
+          </a>
+        ) : null}
       </Container>
     </header>
   );

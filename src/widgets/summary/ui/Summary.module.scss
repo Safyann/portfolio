@@ -1,0 +1,42 @@
+.facts {
+  display: grid;
+  gap: var(--space-4);
+
+  @media (min-width: 560px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 960px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.fact {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+// Статус — во всю ширину ряда и в акцентном цвете: это ответ на главный вопрос рекрутера.
+.status {
+  grid-column: 1 / -1;
+  background: var(--color-accent-soft);
+
+  .value {
+    color: var(--color-accent);
+  }
+}
+
+.value {
+  font-size: var(--fs-lead);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.note {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+}

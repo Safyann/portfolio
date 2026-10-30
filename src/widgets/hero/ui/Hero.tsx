@@ -25,7 +25,7 @@ export function Hero() {
               </ButtonLink>
               {SITE.resumeUrl ? (
                 <ButtonLink href={SITE.resumeUrl} download>
-                  Скачать резюме
+                  Скачать резюме (PDF)
                 </ButtonLink>
               ) : null}
               <ButtonLink href="/#cases">Смотреть кейсы</ButtonLink>

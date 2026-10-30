@@ -73,3 +73,26 @@
     display: none;
   }
 }
+
+// Кнопка резюме: заливка без обводки. На телефоне скрыта — там она есть на первом экране.
+.resume {
+  display: none;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  border-radius: 999px;
+  background: var(--color-surface-strong);
+  color: var(--color-text);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--color-border-strong);
+  }
+
+  @media (min-width: 768px) {
+    display: inline-flex;
+  }
+}
