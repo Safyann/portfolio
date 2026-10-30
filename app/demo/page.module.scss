@@ -1,0 +1,39 @@
+.list {
+  display: grid;
+  gap: var(--space-4);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// Вся карточка кликабельна через растянутую ссылку заголовка.
+.item {
+  position: relative;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: background-color 0.2s ease-out;
+
+  &:hover {
+    background: var(--color-surface-strong);
+  }
+}
+
+.title {
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-lead);
+  font-weight: 500;
+}
+
+.link {
+  color: var(--color-text);
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+}

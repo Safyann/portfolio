@@ -22,9 +22,12 @@ export const SelectRooms: Story = {
     const count = canvas.getByText(/^Найдено:/);
     const totalText = count.textContent;
 
-    await userEvent.click(canvas.getByRole('button', { name: /^2,/ }));
+    // Скрытый текст с числом квартир браузер отделяет пробелом: имя кнопки — «2 , 38 квартир».
+    const twoRooms = canvas.getByRole('button', { name: /^2\s?,/ });
 
-    await expect(canvas.getByRole('button', { name: /^2,/ })).toHaveAttribute('aria-pressed', 'true');
+    await userEvent.click(twoRooms);
+
+    await expect(twoRooms).toHaveAttribute('aria-pressed', 'true');
     await expect(count.textContent).not.toBe(totalText);
     await expect(canvas.getByRole('link', { name: /Открыть полный подбор/ })).toHaveAttribute(
       'href',

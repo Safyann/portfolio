@@ -29,6 +29,7 @@ export const CASES: readonly CaseStudy[] = [
     team: 'Команда ~40 человек, из них ~10 frontend-разработчиков',
     url: 'https://www.sminex.com/',
     image: { name: 'sminex', alt: 'Раздел коммерческой недвижимости на сайте Sminex' },
+    demo: { href: '/demo/picker/', label: 'Демо: подбор квартир' },
     isFeatured: true,
   },
   {
@@ -79,6 +80,7 @@ export const CASES: readonly CaseStudy[] = [
     ],
     metric: { value: '80%', label: 'покрытие UI-kit unit-тестами' },
     visualsNote: 'Личный кабинет закрыт авторизацией — без скриншотов.',
+    demo: { href: '/demo/trades/', label: 'Демо: таблица сделок' },
     isFeatured: true,
   },
   {
@@ -216,6 +218,7 @@ export const CASES: readonly CaseStudy[] = [
     ],
     metric: { value: 'с нуля', label: 'конфигурация, UI-kit, авторизация' },
     visualsNote: 'Личный кабинет закрыт авторизацией — без скриншотов.',
+    demo: { href: '/demo/trades/', label: 'Демо: таблица сделок' },
     isFeatured: false,
   },
 ];

@@ -153,3 +153,9 @@
 .asideEnter {
   --reveal-order: 3;
 }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

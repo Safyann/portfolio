@@ -56,7 +56,7 @@ export const OPEN_GRAPH_BASE = {
 
 export const NAV_ITEMS = [
   { href: '/#cases', label: 'Кейсы' },
-  { href: '/demo/picker/', label: 'Демо' },
+  { href: '/demo/', label: 'Демо' },
   { href: '/#approach', label: 'Подход' },
   { href: '/#contacts', label: 'Контакты' },
 ] as const;

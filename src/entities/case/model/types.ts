@@ -25,6 +25,8 @@ export type CaseStudy = {
   team?: string;
   url?: string;
   image?: CaseImage;
+  // Своя реализация похожей задачи на сайте-портфолио — с вымышленными данными.
+  demo?: { href: string; label: string };
   // Почему нет скриншотов: внутренний инструмент, NDA и т. п.
   visualsNote?: string;
 };

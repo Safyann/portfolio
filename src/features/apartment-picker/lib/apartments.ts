@@ -1,3 +1,5 @@
+import { createRandom, pick } from '@/shared/lib';
+
 import type { Apartment, CompletionQuarter, Project, RoomType } from '../model/types';
 
 // Все данные вымышленные: названия, цены и сроки сгенерированы, к реальным проектам отношения не имеют.
@@ -28,29 +30,6 @@ const APARTMENTS_PER_BUILDING = 34;
 const BUILDINGS_PER_PROJECT = 2;
 const RANDOM_SEED = 20261028;
 const PRICE_ROUNDING_RUB = 10_000;
-
-// Детерминированный генератор, чтобы список не менялся между сборками и совпадал на сервере и клиенте.
-function createRandom(seed: number): () => number {
-  let state = seed;
-
-  return () => {
-    state = (state + 0x6d2b79f5) | 0;
-    let value = Math.imul(state ^ (state >>> 15), 1 | state);
-    value = (value + Math.imul(value ^ (value >>> 7), 61 | value)) ^ value;
-
-    return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function pick<T>(items: readonly T[], random: () => number): T {
-  const item = items[Math.floor(random() * items.length)];
-
-  if (item === undefined) {
-    throw new Error('pick() called with an empty list');
-  }
-
-  return item;
-}
 
 function generateApartments(): Apartment[] {
   const random = createRandom(RANDOM_SEED);

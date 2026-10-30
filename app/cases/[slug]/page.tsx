@@ -87,10 +87,19 @@ export default async function CasePage({ params }: CasePageProps) {
                 ))}
               </ul>
             </section>
-            {caseStudy.url ? (
-              <ButtonLink href={caseStudy.url} variant="primary" external>
-                Открыть сайт ↗
-              </ButtonLink>
+            {caseStudy.url || caseStudy.demo ? (
+              <div className={styles.actions}>
+                {caseStudy.url ? (
+                  <ButtonLink href={caseStudy.url} variant="primary" external>
+                    Открыть сайт ↗
+                  </ButtonLink>
+                ) : null}
+                {caseStudy.demo ? (
+                  <ButtonLink href={caseStudy.demo.href} variant={caseStudy.url ? 'secondary' : 'primary'}>
+                    {caseStudy.demo.label}
+                  </ButtonLink>
+                ) : null}
+              </div>
             ) : null}
           </div>
 
