@@ -62,6 +62,7 @@ export const CASES: readonly CaseStudy[] = [
     ],
     visualsNote: 'Внутренний инструмент — без скриншотов.',
     isFeatured: true,
+    demo: { href: '/demo/builder/', label: 'Демо: конструктор страниц' },
   },
   {
     slug: 'moex',

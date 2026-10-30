@@ -1,0 +1,341 @@
+.builder {
+  display: grid;
+  gap: var(--space-5);
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 220px minmax(0, 1fr) 280px;
+    align-items: start;
+  }
+}
+
+.panelTitle {
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+// Палитра и настройки остаются на виду, пока страница прокручивается.
+.palette,
+.inspector {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: 88px;
+  }
+}
+
+.paletteList {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.paletteItem {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.paletteLabel {
+  font-weight: 500;
+}
+
+.paletteDescription {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+}
+
+.textButton {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-accent);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    text-decoration: underline;
+  }
+
+  &:disabled {
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+  }
+}
+
+.canvas {
+  min-width: 0;
+}
+
+.blocks {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.block {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+}
+
+.selected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+// Перетаскиваемый блок поднимается над остальными.
+.dragging {
+  z-index: 2;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.18);
+}
+
+.blockBar {
+  display: flex;
+  gap: var(--space-1);
+  align-items: center;
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.handle,
+.iconButton {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--color-text-secondary);
+  font: inherit;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  &:disabled {
+    color: var(--color-border-strong);
+    cursor: not-allowed;
+  }
+}
+
+.handle {
+  cursor: grab;
+  touch-action: none;
+  font-size: 18px;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.blockName {
+  flex: 1;
+  min-height: 36px;
+  padding: 0 var(--space-2);
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.blockActions {
+  display: flex;
+}
+
+.blockBody {
+  padding: var(--space-5);
+  cursor: pointer;
+}
+
+.previewHero {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.previewTitle {
+  font-size: var(--fs-title);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.previewSubtitle,
+.previewText {
+  color: var(--color-text-secondary);
+}
+
+.previewText {
+  color: var(--color-text);
+}
+
+.previewFacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--space-4);
+}
+
+.previewFactValue {
+  font-size: var(--fs-title);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.previewFactLabel {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-small);
+}
+
+.previewButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 500;
+}
+
+.empty {
+  color: var(--color-text-secondary);
+}
+
+.json {
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+
+  summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    color: var(--color-accent);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  pre {
+    max-height: 360px;
+    overflow: auto;
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    font-size: 13px;
+  }
+}
+
+.inspectorForm {
+  display: grid;
+  gap: var(--space-4);
+
+  input,
+  textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .panelTitle {
+    margin-bottom: 0;
+    color: var(--color-text);
+    font-size: var(--fs-lead);
+  }
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.fieldLabel {
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.fact {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+// Боковая панель настроек — только на широком экране. На узком та же форма открывается под выбранным блоком,
+// а скрытая копия убрана через display: none, поэтому экранный диктор видит одну форму.
+.inspector {
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.inlineInspector {
+  padding: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}

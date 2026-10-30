@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { expect, fireEvent, userEvent, waitFor, within } from 'storybook/test';
 
 import { TradesTable } from './TradesTable';
 
@@ -26,7 +26,8 @@ export const SearchAndSort: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await userEvent.type(canvas.getByLabelText('Тикер или эмитент'), 'Телемост');
+    // fireEvent, а не userEvent.type: в сборке Storybook ввод через user-event не доходит до onChange React.
+    fireEvent.change(canvas.getByLabelText('Тикер или эмитент'), { target: { value: 'Телемост' } });
     // Таблица догоняет поле поиска через useDeferredValue — ждём, а не проверяем сразу.
     await waitFor(() => expect(canvas.getByText(/^Сделок:/)).not.toHaveTextContent('Сделок: 50 000'));
 
