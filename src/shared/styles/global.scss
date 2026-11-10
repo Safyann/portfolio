@@ -94,6 +94,10 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   background: var(--color-bg);
   color: var(--color-text);
@@ -102,6 +106,10 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+body > main {
+  flex-grow: 1;
 }
 
 h1,
