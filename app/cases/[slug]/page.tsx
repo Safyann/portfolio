@@ -115,10 +115,12 @@ export default async function CasePage({ params }: CasePageProps) {
                 <dt>Период</dt>
                 <dd>{caseStudy.period}</dd>
               </div>
-              <div>
-                <dt>Компания</dt>
-                <dd>{caseStudy.employer}</dd>
-              </div>
+              {caseStudy.employer ? (
+                <div>
+                  <dt>Компания</dt>
+                  <dd>{caseStudy.employer}</dd>
+                </div>
+              ) : null}
               {caseStudy.team ? (
                 <div>
                   <dt>Команда</dt>

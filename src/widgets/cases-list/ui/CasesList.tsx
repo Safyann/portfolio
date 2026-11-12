@@ -11,7 +11,7 @@ export function FeaturedCases() {
     <Section
       id="cases"
       title="Кейсы"
-      lead="Девелопмент, финтех, госсектор и e-commerce. У каждого кейса — задача, мой вклад и стек."
+      lead="Коммерческие и личные проекты. У каждого кейса — задача, мой вклад и стек."
     >
       <CaseList cases={featuredCases} />
       {restCount > 0 ? (

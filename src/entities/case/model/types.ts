@@ -13,7 +13,7 @@ export type CaseStudy = {
   slug: string;
   client: string;
   industry: string;
-  employer: string;
+  employer?: string;
   period: string;
   title: string;
   summary: string;
